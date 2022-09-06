@@ -3,8 +3,8 @@ name = "filecoindot-cli"
 description = 'Pallet that bridges Filecoin to substrate based chains.'
 version = '0.0.1'
 license = "GPL-3.0"
-homepage = 'https://github.com/ChainSafe/filecoindot'
-repository = 'https://github.com/ChainSafe/filecoindot'
+homepage = 'https://github.com/HachikoGeneral/filecoindot'
+repository = 'https://github.com/HachikoGeneral/filecoindot'
 edition = "2021"
 
 [dependencies]
