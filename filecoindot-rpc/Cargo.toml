@@ -1,0 +1,29 @@
+[package]
+name = "filecoindot-rpc"
+authors = ['tianyi@chainsafe.io']
+description = 'filecoindot rpcs.'
+version = "0.0.1"
+license = "GPL-3.0"
+homepage = 'https://github.com/ChainSafe/filecoindot'
+repository = 'https://github.com/ChainSafe/filecoindot'
+edition = "2021"
+
+[dependencies]
+cid = { package = "forest_cid", version = "0.3" }
+hex = "0.4.3"
+jsonrpc-core = "18"
+jsonrpc-core-client = "18"
+jsonrpc-derive = "18"
+derive_more = "^0.99"
+thiserror = "^1"
+parking_lot = "^0.12"
+url = "2.2.2"
+codec = { package = "parity-scale-codec", version = "3.0.0" }
+
+# substrate dependencies
+frame-support =  { version = "4.0.0-dev", default-features = false, path = "../support" }
+sp-core = { version = "6.0.0", default-features = false, path = "../../primitives/core" }
+sp-offchain = { version = "6.0.0", default-features = false, path = "../../primitives/offchain" }
+
+# filecoindot dependencies
+filecoindot-proofs = { path = "../filecoindot-proofs" }

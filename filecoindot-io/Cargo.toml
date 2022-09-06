@@ -1,0 +1,23 @@
+[package]
+name = "filecoindot-io"
+authors = ['tianyi@chainsafe.io']
+description = 'filecoindot runtime interfaces.'
+version = "0.0.1"
+license = "GPL-3.0"
+homepage = 'https://github.com/ChainSafe/filecoindot'
+repository = 'https://github.com/ChainSafe/filecoindot'
+edition = "2021"
+
+[dependencies]
+sp-std = { version = "4.0.0", default-features = false, path = "../../primitives/std" }
+sp-runtime-interface = { version = "6.0.0", default-features = false, path = "../../primitives/runtime" }
+# fileconidot deps
+filecoindot-proofs = { path = "../filecoindot-proofs", default-features = false, optional = true }
+
+[features]
+default = [ "std" ]
+std = [
+  "sp-runtime-interface/std",
+  "sp-std/std",
+  "filecoindot-proofs"
+]

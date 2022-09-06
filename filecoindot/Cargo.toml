@@ -1,0 +1,66 @@
+[package]
+name = 'filecoindot'
+authors = ['matthias@chainsafe.io']
+description = 'Pallet that bridges Filecoin to substrate based chains.'
+version = '0.0.1'
+license = "GPL-3.0"
+homepage = 'https://github.com/ChainSafe/filecoindot'
+repository = 'https://github.com/ChainSafe/filecoindot'
+edition = "2021"
+
+[package.metadata.docs.rs]
+targets = ['x86_64-unknown-linux-gnu']
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false }
+serde = { version = "1.0.136", features = [ "derive" ], default-features = false }
+serde_json = { version = "1.0", features = [ "alloc" ], default-features = false }
+derive_more = "^0.99"
+
+# substrate dependencies
+frame-benchmarking = { version = "4.0.0-dev", default-features = false, path = "../benchmarking" }
+frame-support = { version = "4.0.0-dev", default-features = false, path = "../support" }
+frame-system = { version = "4.0.0-dev", default-features = false, path = "../system" }
+sp-core = { version = "6.0.0", default-features = false, path = "../../primitives/core" }
+scale-info = { version = "2.1.1", default-features = false, features = ["derive"] }
+
+# filecoindot related
+filecoindot-io = { path = "../filecoindot-io", default-features = false }
+
+[dev-dependencies]
+serde = "1.0.136"
+bincode = "1.3.2"
+reqwest = { version = "0.11.9", features = [ "json" ] }
+parking_lot = "0.12.0"
+futures = "0.3.21"
+tokio = { version = "1.17.0", features = [ "full" ] }
+thiserror = "1.0.30"
+dirs = "4.0.0"
+
+sp-core = { version = "6.0.0", default-features = false, path = "../../primitives/core" }
+sp-runtime = { version = "6.0.0", default-features = false, path = "../../primitives/runtime" }
+sp-io = { version = "6.0.0", default-features = false, path = "../../primitives/io" }
+sp-keystore = { version = "6.0.0", default-features = false, path = "../../primitives/keystore" }
+ipld_hamt = { git = "https://github.com/willeslau/forest", branch = "willes/filecoindot" }
+ipld_amt = { git = "https://github.com/willeslau/forest", branch = "willes/filecoindot" }
+ipld_blockstore = { git = "https://github.com/willeslau/forest", branch = "willes/filecoindot" }
+cid = { package = "forest_cid", version = "0.3" }
+serde_cbor = { version = "0.12", features = ["tags"], package = "cs_serde_cbor" }
+filecoindot-proofs = { path = "../filecoindot-proofs", default-features = false }
+filecoindot-io = { path = "../filecoindot-io" }
+
+[features]
+default = ['std']
+runtime-benchmarks = [
+	'frame-benchmarking',
+	'frame-support/runtime-benchmarks',
+	'frame-system/runtime-benchmarks',
+]
+std = [
+	'codec/std',
+	"scale-info/std",
+	'frame-support/std',
+	'frame-system/std',
+	'frame-benchmarking/std',
+	'filecoindot-io/std',
+]
